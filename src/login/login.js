@@ -6,7 +6,7 @@ const scopes ="user-top-read user-follow-read playlist-read-private user-library
 
 const REDIRECT_URI=import.meta.env.VITE_REDIRECT_URI;
 
-const LANDED_URL=import.meta.env.VITE_LANDED_URL;
+const LANDED_URL=import.meta.env.VITE_APP_URL;
 
 
 const authorieUser = ()=>{
@@ -15,7 +15,12 @@ const authorieUser = ()=>{
     
     window.open(url,'login','width=800,height=600');
 }
-
+function copyEmail(event) {
+    navigator.clipboard.writeText('hiwan98291@iucake.com'); 
+}
+function copyPassword() {
+    navigator.clipboard.writeText('password.com');  
+}
 
 document.addEventListener('DOMContentLoaded',()=>{
     
@@ -27,10 +32,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 const storeTokens =(accessToken,tokenType , expireIn)=>{
     window.localStorage.setItem(ACCESS_TOKEN_KEY,accessToken);
-    window.localStorage.setItem(EXPIRE_IN_KEY,expireIn);
+    window.localStorage.setItem(EXPIRE_IN_KEY,(Date.now() + expireIn*1000));
     window.localStorage.setItem(TOKEN_TYPE_KEY,tokenType);
     console.log('token stored');
 }
+
 
 window.addEventListener('load',()=>{
 
@@ -58,4 +64,6 @@ window.addEventListener('load',()=>{
         window.close();
     }
 
+    document.getElementById('copyEmail').addEventListener('click',copyEmail)
+    document.getElementById('copyPassword').addEventListener('click',copyPassword)
 });

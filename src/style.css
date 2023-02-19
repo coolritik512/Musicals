@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.grid-template-areas{
+
+    grid-template-areas:
+     "sidenav contentArea"
+     "playerArea playerArea";
+
+}
+
+.sidnav{
+    grid-area: sidenav;
+}
+
+.content-area{
+    grid-area: contentArea;
+}
+.player-area{
+    grid-area: playerArea;
+    
+}
+
+
+.track:hover .play ,.track.selected .play{
+    visibility: visible;
+}
+.track:hover .track-no ,.track.selected .track-no{
+    visibility: hidden;
+}
+
+.track.playing .song-name{
+    color: green;
+}

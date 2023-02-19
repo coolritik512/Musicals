@@ -1,12 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>MUSIC Dashboard</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="./../style.css">
 </head>
-<body>
-    this is dashboard
+
+<body class="h-screen bg-black text-white">
+
+    <main class="h-full w-full grid grid-template-areas grid-cols-[200px_1fr] grid-rows-[1fr_.15fr] ">
+        <section class="sidenav ">
+
+            <nav class="flex flex-col items-start gap-8 py-8 px-4">
+                <section>
+                    <ul class="text-xl text-secondary cursor-pointer">
+                        <li> <a id="home" class="flex  items-center justify-start">
+                                <span class="material-symbols-outlined hover:text-primary cursor-pointer">
+                                    home
+                                </span>
+                                <p>Home</p>
+                            </a></li>
+                        <li>
+                            <a  id="search" class="flex  items-center justify-start">
+                                <span class="material-symbols-outlined hover:text-primary cursor-pointer">
+                                    search
+                                </span>
+                               <p>Search</p> 
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+
+                <section id="user-playlist" class="border-t border-secondary text-secondary w-full">
+                    <ul class="flex flex-col gap-1 text-xl ">
+                    </ul>
+                </section>
+
+            </nav>
+
+        </section>
+
+        <section id="main-content" class="relative overflow-auto bg-transparent">
+            <header id="header" class="px-8 w-full py-2 bg-black[]/0 z-[11] sticky top-0 ">
+                <nav class="flex justify-end relative ">
+                    <section class="w-full">
+                        <input type="search" name="" id="search-bar" placeholder="Search" class="w-4/5 h-10 rounded-full p-4 text-black text-2xl hidden">
+                    </section>    
+                    <button id="user-profile-btn"
+                        class="bg-gray-800 flex gap-1 border-2 rounded-full pr-2 hover:bg-slate-500 h-full ">
+                        <section id="profile-image">
+                            <svg id="default-image" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="black" class="w-6 h-6 bg-slate-200 rounded-full">
+                                <path stroke-linec ap="round" stroke-linejoin="round"
+                                    d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                        </section>
+                        <section>
+                            <h3 id="display-name">Ritik</h3>
+                        </section>
+                    </button>
+                    <ul id="profile-menu" class="hidden flex flex-col absolute top-7 bg-black w-[90px] ">
+                        <li id="logout" class=" hover:bg-gray-500 text-center rounded-full">Logout</li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section id="cover-content"
+                class="grid content-center absolute z-[-1] top-0 h-72 w-full bg-gradient-to-b from-light-black to-black-base px-4 text-4xl">
+
+                <!-- <section class="grid grid-cols-[auto_1fr] gap-6 p-2" >
+
+                    <img src="" alt="" class="h-40 w-40">
+                    <section class="flex flex-col ">
+                        <p>PlayList</p>
+                        <p id="playlist-name" class="text-8xl">Playlist name</p>
+                        <span class="flex flex-col gap-2 mt-4">
+                            <p id="playlist-artists">artist name</p>
+                            <p>totoal songhs duration of playlist</p>
+                        </span>
+                    </section>
+                </section> -->
+            </section>
+
+
+
+            <section id='playlist-content' class="mt-48  bg-black-base">
+
+                <!-- <h1 class="text-2xl mb-4">Top PlayList</h1>
+                    <section id="top-playlist" class="grid grid-cols-auto-fill-card gap-4" >
+                    </section> -->
+
+            </section>
+        </section>
+
+        <section class="player-area border-t border-t-light-black text-secondary">
+
+            <section class="grid grid-cols-[1fr_2fr_1fr] gap-4">
+                
+                <!-- SONG INFO SECTION -->
+                <section id="song-info" class="grid grid-cols-[auto_1fr] gap-1 place-content-center invisible">
+                    <img id="now-playing-image" src="" alt="img" class="h-12 w-12">
+                    <section class="flex flex-col">
+                        <h2 id="now-playing-song" class="text-lg text-primary">song name</h2>
+                        <p id="now-playing-artist" class="text-sm text-secondary ">song artis</p>
+                    </section>
+                </section>
+
+                <!-- AUDIO CONTROLLER -->
+                <section id="audio-control" class="flex flex-col">
+                    <section class="flex items-center  justify-center">
+                        <button id="previous" class="hover:text-primary">
+                            <span class="material-symbols-outlined" style="font-size:36px;">
+                                skip_previous
+                            </span>
+                        </button>
+                        <button id="play" class="hover:text-primary">
+                            <span id="play-btn" class="material-symbols-outlined" style="font-size:36px;">
+                                play_circle
+                            </span>
+                        </button>
+                        <button id="next" class="hover:text-primary">
+                            <span class="material-symbols-outlined" style="font-size:36px;">
+                                skip_next
+                            </span>
+                        </button>
+
+                        <button id="repeat" class="hover:text-primary">
+                            <span class="material-symbols-outlined">
+                                repeat
+                            </span>
+                        </button>
+                    </section>
+
+                    <section class="w-full flex items-center justify-center p-1">
+                        <span id="song-duration-completed" class="text-sm">0:00</span>
+                        <section id="progress-container" class="w-full cursor-pointer bg-secondary rounded-3xl">
+                            <section id="progress" class="h-2 bg-green w-0 rounded-3xl"></section>
+                        </section>
+                        <span id="total-song-duration" class="text-sm">4:00</span>
+                    </section>
+                </section>
+
+                <section id="volume-control" class="flex place-items-center">
+                    <span class="material-symbols-outlined">
+                        volume_up
+                    </span>
+                    <input id='volume' type="range" name="" id="" min="0" max="100" value="100">
+                </section>
+            </section>
+
+        </section>
+    </main>
+
+
 </body>
+<script type="module" src="./dashboard.js"></script>
+
 </html>
